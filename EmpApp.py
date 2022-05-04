@@ -87,14 +87,10 @@ def getemp():
 
     cursor.execute(retrieve_sql)
 
-    r = cursor.fetchall()
+    rows = cursor.fetchall()
 
-    for i in r:
-        id = i[0]
-        fname = i[1]
-        lname = i[2]
-        skill = i[3]
-        location = i[4]
+    for row in rows:
+        print(row)
     
     return render_template('GetEmpOutput.html')
 
