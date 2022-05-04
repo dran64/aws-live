@@ -82,7 +82,21 @@ def AddEmp():
 
 @app.route("/getemp", methods=['GET', 'POST'])
 def getemp():
-    return render_template('GetEmp.html')
+    retrieve_sql = 'select * from emp_id'
+    cursor = db_conn.cursor()
+
+    cursor.execute(retrieve_sql)
+
+    r = cursor.fetchall()
+
+    for i in r:
+        id = i[0]
+        fname = i[1]
+        lname = i[2]
+        skill = i[3]
+        location = i[4]
+    
+    return render_template('GetEmpOutput.html')
 
 
 if __name__ == '__main__':
