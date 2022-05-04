@@ -82,7 +82,7 @@ def AddEmp():
 
 @app.route("/getemp", methods=['GET', 'POST'])
 def getemp():
-    retrieve_sql = 'select * from emp_id'
+    retrieve_sql = 'select * from employee'
     cursor = db_conn.cursor()
 
     cursor.execute(retrieve_sql)
