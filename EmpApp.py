@@ -26,6 +26,11 @@ def home():
     return render_template('AddEmp.html')
 
 
+@app.route("/getemp", methods=['GET', 'POST'])
+def getemp():
+    return render_template('GetEmp.html')
+
+
 @app.route("/about", methods=['POST'])
 def about():
     return render_template('www.intellipaat.com')
@@ -80,19 +85,16 @@ def AddEmp():
     print("all modification done...")
     return render_template('AddEmpOutput.html', name=emp_name)
 
-@app.route("/getemp", methods=['GET', 'POST'])
-def getemp():
-    retrieve_sql = 'select * from employee'
+@app.route("/fetchdata", methods=['GET', 'POST'])
+def fetchdata():
+    emp_id = request.form['emp_id']
     cursor = db_conn.cursor()
 
-    cursor.execute(retrieve_sql)
+    cursor.execute('select * from employee where emp_id = ?', [emp_id])
 
-    rows = cursor.fetchall()
+    emp = cursor.fetchone()
 
-    for row in rows:
-        print(row)
-    
-    return render_template('GetEmpOutput.html')
+    return render_template('GetEmpOutput.html', emp = emp)
 
 
 if __name__ == '__main__':
