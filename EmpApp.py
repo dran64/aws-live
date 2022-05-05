@@ -86,21 +86,26 @@ def AddEmp():
     return render_template('AddEmpOutput.html', name=emp_name)
 
 @app.route("/fetchdata", methods=['POST'])
-def GetEmp():
-    emp_id = request.form['emp_id']
-    
-    fetch_sql = "select * from employee where emp_id = %s"
+def GetEmp():    
+    fetch_sql = "select * from employee"
     cursor = db_conn.cursor()
     
     try:
-        cursor.execute(fetch_sql, (emp_id))
+        cursor.execute(fetch_sql)
         allemp = cursor.fetchall()
         db_conn.commit()
     
     finally:
         cursor.close()
-
-    return render_template('GetEmpOutput.html', emp = allemp)
+    
+    for row in allemp:
+        emp_id = row[0]
+        first_name = row[1]
+        last_name = row[2]
+        pri_skill = row[3]
+        location = row[4]
+        
+    return render_template('GetEmpOutput.html', emp_id = emp_id, first_name = first_name, last_name = last_name, pri_skill = pri_skill, location = location)
 
 
 if __name__ == '__main__':
