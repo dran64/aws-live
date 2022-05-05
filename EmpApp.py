@@ -94,13 +94,13 @@ def GetEmp():
     
     try:
         cursor.execute(fetch_sql, (emp_id))
-        emp = cursor.fetchall()
+        allemp = cursor.fetchall()
         db_conn.commit()
     
     finally:
         cursor.close()
 
-    return render_template('GetEmpOutput.html', emp = emp)
+    return render_template('GetEmpOutput.html', emp = allemp)
 
 
 if __name__ == '__main__':
