@@ -98,12 +98,12 @@ def GetEmp():
     finally:
         cursor.close()
     
-    for row in allemp:
-        emp_id = row[0]
-        first_name = row[1]
-        last_name = row[2]
-        pri_skill = row[3]
-        location = row[4]
+    for emp in allemp:
+        emp_id = emp[0]
+        first_name = emp[1]
+        last_name = emp[2]
+        pri_skill = emp[3]
+        location = emp[4]
         
     return render_template('GetEmpOutput.html')
 
