@@ -105,7 +105,7 @@ def GetEmp():
         pri_skill = row[3]
         location = row[4]
         
-    return render_template('GetEmpOutput.html', emp_id = emp_id, first_name = first_name, last_name = last_name, pri_skill = pri_skill, location = location)
+    return render_template('GetEmpOutput.html')
 
 
 if __name__ == '__main__':
