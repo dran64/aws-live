@@ -24,13 +24,13 @@
 			      </tr>
 			    </thead>
 			    <tbody>
-			      {% for emp in allemp %}
+			      {% for employee in allemp %}
 			      <tr>
-				<th scope="row">{{ emp_id }}</th>
-				<td>{{ first_name }}</td>
-				<td>{{ last_name }}</td>
-				<td>{{ pri_skill }}</td>
-				<td>{{ location }}</td>
+				<th scope="row">{{ employee[0] }}</th>
+				<td>{{ employee[1] }}</td>
+				<td>{{ employee[2] }}</td>
+				<td>{{ employee[3] }}</td>
+				<td>{{ employee[4] }}</td>
 			       {% endfor %}
 				<td>
 				  <button
