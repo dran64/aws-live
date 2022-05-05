@@ -105,7 +105,7 @@ def GetEmp():
         pri_skill = emp[3]
         location = emp[4]
         
-    return render_template('GetEmpOutput.html')
+    return render_template('GetEmpOutput.html', emp = emp, allemp = allemp)
 
 
 if __name__ == '__main__':
