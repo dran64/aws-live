@@ -97,15 +97,8 @@ def GetEmp():
     
     finally:
         cursor.close()
-    
-    for emp in allemp:
-        emp_id = emp[0]
-        first_name = emp[1]
-        last_name = emp[2]
-        pri_skill = emp[3]
-        location = emp[4]
         
-    return render_template('GetEmpOutput.html', emp = emp, allemp = allemp)
+    return render_template('GetEmpOutput.html', allemp = allemp)
 
 
 if __name__ == '__main__':
