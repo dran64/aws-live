@@ -89,12 +89,16 @@ def AddEmp():
 def GetEmp():
     emp_id = request.form['emp_id']
     
-    fetch_sql = "select * from employee where emp_id = ", emp_id
+    fetch_sql = "select * from employee where emp_id = %s"
     cursor = db_conn.cursor()
-
-    cursor.execute(fetch_sql)
-
-    emp = cursor.fetchone()
+    
+    try:
+        cursor.execute(fetch_sql, (emp_id))
+        emp = cursor.fetchall()
+        db_conn.commit()
+    
+    finally:
+        cursor.close()
 
     return render_template('GetEmpOutput.html', emp = emp)
 
