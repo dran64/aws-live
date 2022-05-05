@@ -10,26 +10,58 @@
 
 		<body bgcolor="lightgrey">
 
-			<form action="/getemp" method="GET">
-
-				<div>
-			  		Employee ID:<br> {{ emp_id }} <br><br>
-
-			  		First Name:<br> {{ first_name }} <br><br>
-
-			  		Last Name:<br> {{ last_name }} <br><br>
-
-			  		Primary Skill:<br> {{ pri_skill }} <br><br>
-
-			  		Location:<br> {{ location }} <br><br>
-
-			  		Image URL: <br> {{ image_url }} <br><br>
-
-			  		<button type="submit" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;" formaction="http://3.134.115.108:80/getemp">RESET</button><br><br>
-
-			  	</div>
-
-			</form>
+		<table class="table">
+			    <thead>
+			      <tr>
+				<th scope="col">Employee ID</th>
+				<th scope="col">First Name</th>
+				<th scope="col">Last Name</th>
+				<th scope="col">Primary Skills</th>
+				<th scope="col">Location</th>
+				<th scope="col">Update</th>
+				<th scope="col">Delete</th>
+				<th scope="col">View Full Profile</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      {% for emp in allemp %}
+			      <tr>
+				<th scope="row">{{ id }}</th>
+				<td>{{ fname }}</td>
+				<td>{{ lname }}</td>
+				<td>{{ interest }}</td>
+				<td>{{ location }}</td>
+				<td>
+				  <button
+				    class="btn btn-sm"
+				    style="background-color: black; color: whitesmoke"
+				    href="#"
+				  >
+				    Update
+				  </button>
+				</td>
+				<td>
+				  <button
+				    class="btn btn-sm"
+				    style="background-color: black; color: whitesmoke"
+				    href="#"
+				  >
+				    Delete
+				  </button>
+				</td>
+				<td>
+				  <button
+				    class="btn btn-sm"
+				    style="background-color: black; color: whitesmoke"
+				    href="#"
+				  >
+				    View Full Profile
+				  </button>
+				</td>
+			      </tr>
+			      <tr></tr>
+			    </tbody>
+			  </table>
 
 		</body>
 
