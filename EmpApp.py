@@ -86,7 +86,7 @@ def AddEmp():
     return render_template('AddEmpOutput.html', name=emp_name)
 
 @app.route("/fetchdata", methods=['GET', 'POST'])
-def fetchdata():
+def GetEmp():
     emp_id = request.form['emp_id']
     cursor = db_conn.cursor()
 
