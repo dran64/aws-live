@@ -155,7 +155,7 @@ def editEmp():
         cursor.close()
         
     print("all modification done...")
-    return render_template('GetEmpOutput.html', name=emp_name, employeeId=employeeId)
+    return render_template('GetEmpOutput.html')
 
 
 if __name__ == '__main__':
