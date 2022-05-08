@@ -32,7 +32,7 @@ def getemp():
 
 
 @app.route("/editemp", methods=['GET', 'POST'])
-def home():
+def editemp():
     return render_template('EditEmp.html')
 
 
