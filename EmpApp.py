@@ -109,51 +109,27 @@ def GetEmp():
 
 @app.route("/editEmp", methods=['POST'])
 def editEmp():
-    connection = create_connection()
-    employeeId = request.form['employeeId']
-    firstName = request.form['firstName']
-    lastName = request.form['lastName']
-    gender = request.form['gender']
-    dateOfBirth = request.form['dateOfBirth']
-    identityCardNumber = request.form['identityCardNumber']
-    email = request.form['email']
-    mobile = request.form['mobile']
-    address = request.form['address']
-    salary = request.form['salary']
-    department = request.form['department']
-    hireDate = request.form['hireDate']
-    currentEmployeeId = request.form['currentEmployeeId']
+    emp_id = request.form['emp_id']
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    pri_skill = request.form['pri_skill']
+    location = request.form['location']
+    emp_image_file = request.files['emp_image_file']
 
-    emp_image_file = request.files['image']
-    split_tup = os.path.splitext(emp_image_file.filename)
-    file_extension = split_tup[1]
-   
+    update_sql = "UPDATE employee set emp_id = %s, first_name = %s, last_name  %s, pri_skill = %s, location = %s WHERE emp_id = %s"
+
+    cursor = db_conn.cursor()
 
     if emp_image_file.filename == "":
-        updateEmployeeSql = "UPDATE employee set id= %s,first_name= %s,last_name= %s,gender= %s,date_of_birth= %s,identity_card_number= %s,email= %s,mobile= %s,address= %s,salary= %s,department= %s,hire_date= %s WHERE id=%s"
-        cursor = connection.cursor()
-        
-        try:
-            cursor.execute(updateEmployeeSql, (employeeId, firstName, lastName, gender, dateOfBirth,identityCardNumber, email, mobile, address, salary, department, hireDate,currentEmployeeId))
-            emp_name = "" + firstName + " " + lastName
-            db_conn.commit()
-        finally:
-            connection.close()
-        return render_template('GetEmpOutput.html', name=emp_name, employeeId=employeeId)
-
-    else:
-        updateEmployeeSql = "UPDATE employee set id= %s,first_name= %s,last_name= %s,gender= %s,date_of_birth= %s,identity_card_number= %s,email= %s,mobile= %s,address= %s,salary= %s,department= %s,image= %s,hire_date= %s WHERE id=%s"
-        cursor = connection.cursor()
-
+        return "Please select a file"
 
     try:
-        cursor.execute(updateEmployeeSql, (employeeId, firstName, lastName, gender, dateOfBirth, 
-        identityCardNumber, email, mobile, address, salary, department, emp_image_file, hireDate,currentEmployeeId))
-        cursor.execute(insert_sql)
+
+        cursor.execute(update_sql, (emp_id, first_name, last_name, pri_skill, location, emp_id))
         db_conn.commit()
-        emp_name = "" + firstName + " " + lastName
+        emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
-        emp_image_file_name_in_s3 = "emp-id-" + str(employeeId) + "_image_file"+ file_extension
+        emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
         s3 = boto3.resource('s3')
 
         try:
@@ -171,22 +147,13 @@ def editEmp():
                 s3_location,
                 custombucket,
                 emp_image_file_name_in_s3)
-            update_sql = "UPDATE employee set image = %s WHERE id=%s"
-            cursor = connection.cursor()
-            cursor.execute(update_sql, (object_url,employeeId))
-            db_conn.commit()
-
 
         except Exception as e:
-            print("running expection")
-            print(e)
             return str(e)
 
     finally:
-        print("running finally")
+        cursor.close()
         
-        connection.close()
-
     print("all modification done...")
     return render_template('GetEmpOutput.html', name=emp_name, employeeId=employeeId)
 
