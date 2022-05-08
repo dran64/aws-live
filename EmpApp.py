@@ -154,7 +154,7 @@ def editEmp():
     finally:
         cursor.close()
         
-    GetEmp()
+    return(GetEmp())
 
 
 if __name__ == '__main__':
