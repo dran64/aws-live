@@ -139,7 +139,7 @@ def editEmp():
             # db_conn.commit()
         finally:
             connection.close()
-        return render_template('editEmpOutput.html', name=emp_name, employeeId=employeeId)
+        return render_template('GetEmpOutput.html', name=emp_name, employeeId=employeeId)
 
     else:
         updateEmployeeSql = "UPDATE employee set id= %s,first_name= %s,last_name= %s,gender= %s,date_of_birth= %s,identity_card_number= %s,email= %s,mobile= %s,address= %s,salary= %s,department= %s,image= %s,hire_date= %s WHERE id=%s"
@@ -188,7 +188,7 @@ def editEmp():
         connection.close()
 
     print("all modification done...")
-    return render_template('editEmpOutput.html', name=emp_name, employeeId=employeeId)
+    return render_template('GetEmpOutput.html', name=emp_name, employeeId=employeeId)
 
 
 if __name__ == '__main__':
