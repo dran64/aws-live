@@ -154,8 +154,7 @@ def editEmp():
     finally:
         cursor.close()
         
-    print("all modification done...")
-    return render_template('GetEmpOutput.html')
+    GetEmp()
 
 
 if __name__ == '__main__':
