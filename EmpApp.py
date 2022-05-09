@@ -157,5 +157,21 @@ def editEmp():
     return(GetEmp())
 
 
+@app.route('/deleteEmployee/<employeeId>', methods=['GET', 'POST'])
+def deleteEmployee(employeeId):
+    connection = create_connection()
+    deleteEmployeeSql = "DELETE FROM employee where emp_id= %s"
+    cursor = connection.cursor()
+    
+    try:
+        cursor.execute(deleteEmployeeSql)
+        db_conn.commit()
+
+    finally:
+        cursor.close()
+    
+    return(GetEmp())
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
