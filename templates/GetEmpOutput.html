@@ -78,13 +78,9 @@
 				 </form>
 				</td>
 				<td>
-				  <button
-				    class="btn btn-sm"
-				    style="background-color: black; color: whitesmoke"
-				    href="#"
-				  >
-				    Delete
-				  </button>
+				   <a href="{{url_for('deleteEmployee',employeeId=employee[0])}}">
+				   <button type="button" class="btn btn-sm" style="background-color: black; color: whitesmoke">Delete</button>
+				   </a>
 				</td>
 				<td>
 				  <button
