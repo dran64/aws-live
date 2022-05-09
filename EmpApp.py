@@ -159,7 +159,6 @@ def editEmp():
 
 @app.route('/deleteEmployee/<employeeId>', methods=['GET', 'POST'])
 def deleteEmployee(employeeId):
-    connection = create_connection()
     deleteEmployeeSql = "DELETE FROM employee where emp_id= %s"
     cursor = connection.cursor()
     
