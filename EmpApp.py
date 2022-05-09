@@ -160,7 +160,7 @@ def editEmp():
 @app.route('/deleteEmployee/<employeeId>', methods=['GET', 'POST'])
 def deleteEmployee(employeeId):
     deleteEmployeeSql = "DELETE FROM employee where emp_id= %s"
-    cursor = connection.cursor()
+    cursor = db_conn.cursor()
     
     try:
         cursor.execute(deleteEmployeeSql)
