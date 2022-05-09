@@ -163,7 +163,7 @@ def deleteEmployee(employeeId):
     cursor = db_conn.cursor()
     
     try:
-        cursor.execute(deleteEmployeeSql, (enmployeeId))
+        cursor.execute(deleteEmployeeSql, (employeeId))
         db_conn.commit()
 
     finally:
