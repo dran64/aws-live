@@ -88,7 +88,7 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template(home)
+    #return render_template(home)
 
 
 @app.route("/fetchdata", methods=['POST'])
