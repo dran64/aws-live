@@ -20,6 +20,8 @@
       <div class="child child6 container" style="color: black">
         <ul class="nav nav-tabs nav-fill">
           <li class="nav-item">
+            <form action="/fetchdata" autocomplete="on" method="POST">
+            <button type="submit" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">
             <a
               class="nav-link"
               style="
@@ -27,9 +29,11 @@
                 color: whitesmoke;
                 border-radius: 1em;
               "
-              href="{{url_for('getemp')}}"
+              href="."
               >View All Employee</a
             >
+            </button>
+            </form>
           </li>
           <li class="nav-item">
             <a
