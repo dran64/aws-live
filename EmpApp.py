@@ -26,9 +26,9 @@ def home():
     return render_template('AddEmp.html')
 
 
-@app.route("/getemp", methods=['GET', 'POST'])
-def getemp():
-    return render_template('GetEmp.html')
+#@app.route("/getemp", methods=['GET', 'POST'])
+#def getemp():
+#    return render_template('GetEmp.html')
 
 
 @app.route("/editemp", methods=['GET', 'POST'])
