@@ -92,7 +92,7 @@ def AddEmp():
 
 
 @app.route("/fetchdata", methods=['POST'])
-def GetEmp():    
+def GetEmpOutput():    
     fetch_sql = "select * from employee"
     cursor = db_conn.cursor()
     
