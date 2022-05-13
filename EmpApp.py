@@ -88,7 +88,7 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('AddEmpOutput.html', name=emp_name)
+    return render_template(GetEmpOutput)
 
 
 @app.route("/fetchdata", methods=['POST'])
@@ -154,7 +154,7 @@ def editEmp():
     finally:
         cursor.close()
         
-    return(GetEmp())
+    return(GetEmpOutput())
 
 
 @app.route('/deleteEmployee/<employeeId>', methods=['GET', 'POST'])
@@ -169,7 +169,7 @@ def deleteEmployee(employeeId):
     finally:
         cursor.close()
     
-    return(GetEmp())
+    return(GetEmpOutput())
 
 
 if __name__ == '__main__':
