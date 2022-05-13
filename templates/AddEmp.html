@@ -21,7 +21,17 @@
         <ul class="nav nav-tabs nav-fill">
           <li class="nav-item">
             <form action="/fetchdata" autocomplete="on" method="POST">
-            <button type="submit">View All Employee</button>
+              <button
+                class="nav-link active"
+                type="submit"
+                style="
+                  background-color: black;
+                  color: whitesmoke;
+                  border-radius: 1em;
+                "
+              >
+                View All Employee
+              </button>
             </form>
           </li>
           <li class="nav-item">
@@ -46,7 +56,13 @@
             <h3>ADD NEW EMPLOYEES</h3>
           </caption>
           <hr />
-          <form class="p-3" action="/addemp" autocomplete="on" method="POST" enctype="multipart/form-data">
+          <form
+            class="p-3"
+            action="/addemp"
+            autocomplete="on"
+            method="POST"
+            enctype="multipart/form-data"
+          >
             <div class="mb-2">
               <label for="name" class="form-label">Employee ID: </label>
               <input
@@ -117,7 +133,6 @@
           <div class="circleright"></div>
         </div>
       </div>
-
     </div>
 
     <script

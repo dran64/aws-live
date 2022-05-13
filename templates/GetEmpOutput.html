@@ -24,13 +24,27 @@
               class="nav-link active"
               aria-current="page"
               href="dashboard.html"
-              style="background-color: black; color: whitesmoke"
+              style="
+                background-color: black;
+                color: whitesmoke;
+                border-radius: 1em;
+              "
               >View All Employee</a
             >
           </li>
           <li class="nav-item">
             <form action="/" autocomplete="on" method="POST">
-            <button type="submit">Add New Employee</button>
+              <button
+                class="nav-link active"
+                type="submit"
+                style="
+                  background-color: black;
+                  color: whitesmoke;
+                  border-radius: 1em;
+                "
+              >
+                Add New Employee
+              </button>
             </form>
           </li>
         </ul>
@@ -54,43 +68,54 @@
               </tr>
             </thead>
             <tbody>
-              {% for employee in allemp %}
-			    <tr>
-				<th scope="row">{{ employee[0] }}</th>
-				<td>{{ employee[1] }}</td>
-				<td>{{ employee[2] }}</td>
-				<td>{{ employee[3] }}</td>
-				<td>{{ employee[4] }}</td>
-			       
-				<td>
-				  <form action="/editemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
-				  <button
-				    type="submit"
-				    class="btn btn-sm"
-				    style="background-color: black; color: whitesmoke"
-				    href="#"
-				  >
-				    Update
-				  </button>
-				 </form>
-				</td>
-				<td>
-				   <a href="{{url_for('deleteEmployee',employeeId=employee[0])}}">
-				   <button type="button" class="btn btn-sm" style="background-color: black; color: whitesmoke">Delete</button>
-				   </a>
-				</td>
-				<td>
-				  <button
-				    class="btn btn-sm"
-				    style="background-color: black; color: whitesmoke"
-				    href="#"
-				  >
-				    View Full Profile
-				  </button>
-				</td>
-			    </tr>
-				{% endfor %}
-				<tr></tr>
+              <tr>
+                <th scope="row">{{ employee[0] }}</th>
+                <td>{{ employee[1] }}</td>
+                <td>{{ employee[2] }}</td>
+                <td>{{ employee[3] }}</td>
+                <td>{{ employee[4] }}</td>
+
+                <td>
+                  <form
+                    action="/editemp"
+                    autocomplete="on"
+                    method="POST"
+                    enctype="multipart/form-data"
+                  >
+                    <button
+                      type="submit"
+                      class="btn btn-sm"
+                      style="background-color: black; color: whitesmoke"
+                      href="#"
+                    >
+                      Update
+                    </button>
+                  </form>
+                </td>
+                <td>
+                  <a
+                    href="{{url_for('deleteEmployee',employeeId=employee[0])}}"
+                  >
+                    <button
+                      type="button"
+                      class="btn btn-sm"
+                      style="background-color: black; color: whitesmoke"
+                    >
+                      Delete
+                    </button>
+                  </a>
+                </td>
+                <td>
+                  <button
+                    class="btn btn-sm"
+                    style="background-color: black; color: whitesmoke"
+                    href="#"
+                  >
+                    View Full Profile
+                  </button>
+                </td>
+              </tr>
+              <tr></tr>
             </tbody>
           </table>
         </div>
